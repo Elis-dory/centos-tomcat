@@ -45,6 +45,9 @@ RUN groupadd -r tomcat && \
  useradd -g tomcat -d ${CATALINA_HOME} -s /sbin/nologin  -c "Tomcat user" tomcat && \
  chown -R tomcat:tomcat ${CATALINA_HOME}
 
+WORKDIR /opt/tomcat/webapps
+RUN curl -O -L http://192.168.1.73:8081/repository/maven-snapshots/sparkjava-hello-world-1.0-20191125.100147-1.war
+
 WORKDIR /opt/tomcat
 
 EXPOSE 8082
